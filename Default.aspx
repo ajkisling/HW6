@@ -24,13 +24,13 @@
         <h2>Using 5 Ingredients or Less!</h2>
         <br />
         <h3>
-            <asp:HyperLink ID="link_Home" runat="server" Font-Underline="False" NavigateUrl="~/Default.aspx" ForeColor="Black">Home</asp:HyperLink>
+            <asp:HyperLink ID="link_Home" runat="server" Font-Underline="False" NavigateUrl="~/Default.aspx" ForeColor="#696969">Home</asp:HyperLink>
                 &nbsp;|
-            <asp:HyperLink ID="link_NewRecipe" runat="server" Font-Underline="False" NavigateUrl="~/NewRecipe.aspx" ForeColor="Black">New Recipe</asp:HyperLink>
+            <asp:HyperLink ID="link_NewRecipe" runat="server" Font-Underline="False" NavigateUrl="~/NewRecipe.aspx" ForeColor="#696969">New Recipe</asp:HyperLink>
                 &nbsp;| 
-            <asp:HyperLink ID="link_AboutUs" runat="server" Font-Underline="False" NavigateUrl="~/AboutUs.aspx" ForeColor="Black">About Us</asp:HyperLink>
+            <asp:HyperLink ID="link_AboutUs" runat="server" Font-Underline="False" NavigateUrl="~/AboutUs.aspx" ForeColor="#696969">About Us</asp:HyperLink>
                 &nbsp;| 
-            <asp:HyperLink ID="link_Contact" runat="server" Font-Underline="False" NavigateUrl="~/ContactUs.aspx" ForeColor="Black">Contact</asp:HyperLink>
+            <asp:HyperLink ID="link_Contact" runat="server" Font-Underline="False" NavigateUrl="~/ContactUs.aspx" ForeColor="#696969">Contact</asp:HyperLink>
         </h3>
         <br />
         <asp:SqlDataSource ID="sql_recipes" runat="server" ConnectionString="<%$ ConnectionStrings:ajkisling_recipes_HW6 %>" SelectCommand="SELECT * FROM [ajkisling_recipes_HW6]"></asp:SqlDataSource>
@@ -41,11 +41,11 @@
             <Columns>
                 <asp:BoundField DataField="RecipeName" HeaderText="Recipe Name" SortExpression="RecipeName" >
                 <HeaderStyle BackColor="#FFFF99" />
-                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="300px" />
+                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="350px" />
                 </asp:BoundField>
                 <asp:BoundField DataField="SubmittedBy" HeaderText="Submitted By" SortExpression="SubmittedBy" >
                 <HeaderStyle BackColor="#FFFF99" />
-                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="300px" />
+                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="250px" />
                 </asp:BoundField>
                 <asp:HyperLinkField DataNavigateUrlFields="RecipeID" DataNavigateUrlFormatString="~/Recipe.aspx?RecipeID={0}" Text="Select" HeaderText="View" >
                 <HeaderStyle BackColor="#FFFF99" />
