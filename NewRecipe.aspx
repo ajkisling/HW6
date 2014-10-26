@@ -8,23 +8,31 @@
        <title>Wicked Easy Recipes</title>
        <link rel="StyleSheet" type="text/css" href="~/css/StyleSheet.css" />
 
+       <style type="text/css">
+        #form1 {
+            width: 600px;
+        }
+    </style>
+
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
+    <div style="height: 753px; width: 595px">
     
-        Wicked Easy Recipes<br />
-        Using 5 Ingredients or Less!<br />
+              <h1>Wicked Easy Recipes<br /></h1>
+       <h2>Using 5 Ingredients or Less!</h2>
         <br />
-        <asp:HyperLink ID="link_Home" runat="server" Font-Underline="False" NavigateUrl="~/Default.aspx" ForeColor="Black">Home</asp:HyperLink>
-&nbsp;|
-        <asp:HyperLink ID="link_NewRecipe" runat="server" Font-Underline="False" NavigateUrl="~/NewRecipe.aspx" ForeColor="Black">New Recipe</asp:HyperLink>
-&nbsp;| 
-        <asp:HyperLink ID="link_AboutUs" runat="server" Font-Underline="False" NavigateUrl="~/AboutUs.aspx" ForeColor="Black">About Us</asp:HyperLink>
-&nbsp;| 
-        <asp:HyperLink ID="link_Contact" runat="server" Font-Underline="False" NavigateUrl="~/ContactUs.aspx" ForeColor="Black">Contact</asp:HyperLink>
+       <h3>
+            <asp:HyperLink ID="HyperLink1" runat="server" Font-Underline="False" NavigateUrl="~/Default.aspx" ForeColor="#696969">Home</asp:HyperLink>
+                &nbsp;|
+            <asp:HyperLink ID="HyperLink2" runat="server" Font-Underline="False" NavigateUrl="~/NewRecipe.aspx" ForeColor="#696969">New Recipe</asp:HyperLink>
+                &nbsp;| 
+            <asp:HyperLink ID="HyperLink3" runat="server" Font-Underline="False" NavigateUrl="~/AboutUs.aspx" ForeColor="#696969">About Us</asp:HyperLink>
+                &nbsp;| 
+            <asp:HyperLink ID="HyperLink4" runat="server" Font-Underline="False" NavigateUrl="~/ContactUs.aspx" ForeColor="#696969">Contact</asp:HyperLink>
+        </h3>
         <br />
-        <br />
+
         <asp:SqlDataSource ID="sql_ViewRecipe" runat="server" ConnectionString="<%$ ConnectionStrings:ajkisling_recipes_HW6 %>" DeleteCommand="DELETE FROM [ajkisling_recipes_HW6] WHERE [RecipeID] = @RecipeID" 
             InsertCommand="INSERT INTO [ajkisling_recipes_HW6] ([RecipeName], [SubmittedBy], [Ingredient1], [Ingredient2], [Ingredient3], [Ingredient4], [Ingredient5], [Preparation], [Notes]) VALUES (@RecipeName, @SubmittedBy, @Ingredient1, @Ingredient2, @Ingredient3, @Ingredient4, @Ingredient5, @Preparation, @Notes)" SelectCommand="SELECT [RecipeName], [SubmittedBy], [Ingredient1], [Ingredient2], [Ingredient3], [Ingredient4], [Ingredient5], [Preparation], [Notes], [RecipeID] FROM [ajkisling_recipes_HW6]" UpdateCommand="UPDATE [ajkisling_recipes_HW6] SET [RecipeName] = @RecipeName, [SubmittedBy] = @SubmittedBy, [Ingredient1] = @Ingredient1, [Ingredient2] = @Ingredient2, [Ingredient3] = @Ingredient3, [Ingredient4] = @Ingredient4, [Ingredient5] = @Ingredient5, [Preparation] = @Preparation, [Notes] = @Notes WHERE [RecipeID] = @RecipeID">
             <DeleteParameters>
@@ -55,7 +63,7 @@
             </UpdateParameters>
         </asp:SqlDataSource>
     
-        <asp:FormView ID="form_NewRecipe" runat="server" DataKeyNames="RecipeID" DataSourceID="sql_ViewRecipe" DefaultMode="Insert">
+        <asp:FormView ID="form_NewRecipe" runat="server" DataKeyNames="RecipeID" DataSourceID="sql_ViewRecipe" DefaultMode="Insert" Height="355px" Width="594px">
             <EditItemTemplate>
 
             </EditItemTemplate>
@@ -63,92 +71,83 @@
                 
                 <table>
                     <tr>
-                        <td style="text-align:right;">
+                        <td class="column1">
                             Recipe Name
                         </td>
-                        <td style="text-align:left;">
-                            <asp:TextBox ID="RecipeNameTextBox" runat="server" Text='<%# Bind("RecipeName") %>' />
+                        <td class="column2">
+                            <asp:TextBox ID="RecipeNameTextBox" runat="server" height="20px" width="300px" Text='<%# Bind("RecipeName") %>' />
                         </td>
                     </tr>
                         
                     <tr>
-                        <td style="text-align:right;">
+                        <td class="column1">
                             Submitted By
                         </td>
-                        <td style="text-align:left;">
-                            <asp:TextBox ID="SubmittedByTextBox" runat="server" Text='<%# Bind("SubmittedBy") %>' />
+                        <td class="column2">
+                            <asp:TextBox ID="SubmittedByTextBox" runat="server" height="20px" width="300px" Text='<%# Bind("SubmittedBy") %>' />
                         </td>
                     </tr>
                     
                     <tr>
-                        <td style="text-align:right;">
+                        <td class="column1">
                             Ingredient #1
                         </td>
-                        <td style="text-align:left;">
-                            <asp:TextBox ID="Ingredient1TextBox" runat="server" Text='<%# Bind("Ingredient1") %>' />
+                        <td class="column2">
+                            <asp:TextBox ID="Ingredient1TextBox" runat="server" height="20px" width="300px" Text='<%# Bind("Ingredient1") %>' />
                         </td>
                     </tr>
 
                     <tr>
-                        <td style="text-align:right;">
-                            Ingredient #1
-                        </td>
-                        <td style="text-align:left;">
-                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Ingredient1") %>' />
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td style="text-align:right;">
+                        <td class="column1">
                             Ingredient #2
                         </td>
-                        <td style="text-align:left;">
-                            <asp:TextBox ID="Ingredient2TextBox" runat="server" Text='<%# Bind("Ingredient2") %>' />
+                        <td class="column2">
+                            <asp:TextBox ID="Ingredient2TextBox" runat="server"  height="20px" width="300px" Text='<%# Bind("Ingredient2") %>' />
                         </td>
                     </tr>
 
                     <tr>
-                        <td style="text-align:right;">
+                        <td class="column1">
                             Ingredient #3
                         </td>
-                        <td style="text-align:left;">
-                            <asp:TextBox ID="Ingredient3TextBox" runat="server" Text='<%# Bind("Ingredient3") %>' />
+                        <td class="column2">
+                            <asp:TextBox ID="Ingredient3TextBox" runat="server" height="20px" width="300px" Text='<%# Bind("Ingredient3") %>' />
                         </td>
                     </tr>
 
                     <tr>
-                        <td style="text-align:right;">
+                        <td class="column1">
                             Ingredient #4
                         </td>
-                        <td style="text-align:left;">
-                            <asp:TextBox ID="Ingredient4TextBox" runat="server" Text='<%# Bind("Ingredient4") %>' />
+                        <td class="column2">
+                            <asp:TextBox ID="Ingredient4TextBox" runat="server" height="20px" width="300px" Text='<%# Bind("Ingredient4") %>' />
                         </td>
                     </tr>
 
                     <tr>
-                        <td style="text-align:right;">
+                        <td class="column1">
                             Ingredient #5
                         </td>
-                        <td style="text-align:left;">
-                            <asp:TextBox ID="Ingredient5TextBox" runat="server" Text='<%# Bind("Ingredient5") %>' />
+                        <td class="column2">
+                            <asp:TextBox ID="Ingredient5TextBox" runat="server" height="20px" width="300px" Text='<%# Bind("Ingredient5") %>' />
                         </td>
                     </tr>
 
                     <tr>
-                        <td style="text-align:right;">
+                        <td class="column3">
                             Preparation
                         </td>
-                        <td style="text-align:left;">
-                            <asp:TextBox ID="PreparationTextBox" runat="server" Text='<%# Bind("Preparation") %>' />
+                        <td class="column2">
+                            <asp:TextBox ID="PreparationTextBox" runat="server" textmode="multiline" height="75px" width="300px" Text='<%# Bind("Preparation") %>' />
                         </td>
                     </tr>
 
                     <tr>
-                        <td style="text-align:right;">
+                        <td class="column3">
                             Notes
                         </td>
-                        <td style="text-align:left;">
-                            <asp:TextBox ID="NotesTextBox" runat="server" Text='<%# Bind("Notes") %>' />
+                        <td class="column2">
+                            <asp:TextBox ID="NotesTextBox" runat="server" textmode="multiline" height="75px" width="300px" Text='<%# Bind("Notes") %>' />
                         </td>
 
                 </table>                
@@ -163,7 +162,7 @@
 
     </div>
         <br />
-        &copy; 2014, MSCI:3300 Software Design &amp; Development<br />
+        <h6>&copy; 2014, MSCI:3300 Software Design &amp; Development<br /></h6>
     </form>
 </body>
 </html>

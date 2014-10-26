@@ -10,8 +10,8 @@
 
     <style type="text/css">
         #form1 {
-            height: 578px;
-            width: 711px;
+            height: 600px;
+            width: 700px;
         }
     </style>
 
@@ -37,19 +37,25 @@
     
     </div>
 
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="RecipeID" DataSourceID="sql_recipes" Width="706px" Height="248px">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="RecipeID" DataSourceID="sql_recipes" Width="698px" Height="246px">
             <Columns>
                 <asp:BoundField DataField="RecipeName" HeaderText="Recipe Name" SortExpression="RecipeName" >
-                <HeaderStyle BackColor="#FFFF99" />
-                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="350px" />
+                <ControlStyle BorderColor="White" BorderStyle="Solid" BorderWidth="8px" />
+                <FooterStyle BorderColor="White" BorderStyle="Solid" BorderWidth="3px" />
+                <HeaderStyle BackColor="#FFFF99" BorderColor="White" BorderStyle="Solid" BorderWidth="3px" Font-Size="14pt" ForeColor="DimGray" />
+                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="250px" BackColor="LightCoral" BorderColor="White" BorderStyle="Solid" BorderWidth="3px" ForeColor="White" />
                 </asp:BoundField>
                 <asp:BoundField DataField="SubmittedBy" HeaderText="Submitted By" SortExpression="SubmittedBy" >
-                <HeaderStyle BackColor="#FFFF99" />
-                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="250px" />
+                <FooterStyle BorderColor="White" BorderStyle="Solid" BorderWidth="3px" />
+                <HeaderStyle BackColor="#FFFF99" BorderColor="White" BorderStyle="Solid" BorderWidth="3px" Font-Size="14pt" ForeColor="DimGray" />
+                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="200px" BackColor="LightCoral" BorderColor="White" BorderStyle="Solid" BorderWidth="3px" ForeColor="White" />
                 </asp:BoundField>
-                <asp:HyperLinkField DataNavigateUrlFields="RecipeID" DataNavigateUrlFormatString="~/Recipe.aspx?RecipeID={0}" Text="Select" HeaderText="View" >
-                <HeaderStyle BackColor="#FFFF99" />
-                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
+                <asp:HyperLinkField DataNavigateUrlFields="RecipeID" DataNavigateUrlFormatString="~/Recipe.aspx?RecipeID={0}" Text="Select" ControlStyle-ForeColor="Black" ControlStyle-CssClass="hyp">
+<ControlStyle CssClass="hyp" ForeColor="Black"></ControlStyle>
+
+                <FooterStyle BorderColor="White" BorderStyle="Solid" BorderWidth="3px" />
+                <HeaderStyle BackColor="#FFFF99" BorderColor="White" BorderStyle="Solid" BorderWidth="3px" Font-Size="14pt" ForeColor="DimGray" />
+                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" BackColor="LightCoral" BorderColor="White" BorderStyle="Solid" BorderWidth="3px" ForeColor="White" />
                 </asp:HyperLinkField>
             </Columns>
         </asp:GridView>
