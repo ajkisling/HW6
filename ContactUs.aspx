@@ -35,15 +35,12 @@
 
     <div style="height: 298px; width: 594px">
     
-        <!-- Check if postback.  If not, display the contact form. -->
-        <% If Not IsPostBack Then%>
-
-        Your email address:<br />
+        Email address:<br />
         <asp:TextBox ID="senderAddress" runat="server" Width="336px"></asp:TextBox>
         <br />
         <br />
        
-         Your message:
+         Message:
         <br />         
         <asp:TextBox ID="senderMessage" runat="server" Rows="20" Columns="30" TextMode="MultiLine" Height="193px" Width="589px"></asp:TextBox>
         
@@ -59,6 +56,8 @@
         <%End If%>
 
         <asp:Button ID="sendMail" runat="server" Text="Send" cssclass="button" />
+
+        <br />
 
         <h6>&copy; 2014, MSCI:3300 Software Design &amp; Development</h6>
     

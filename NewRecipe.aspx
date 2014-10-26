@@ -10,14 +10,15 @@
 
        <style type="text/css">
         #form1 {
-            width: 600px;
-        }
+            width: 724px;
+               height: 818px;
+           }
     </style>
 
 </head>
 <body>
     <form id="form1" runat="server">
-    <div style="height: 753px; width: 595px">
+    <div style="height: 712px; width: 724px">
     
               <h1>Wicked Easy Recipes<br /></h1>
        <h2>Using 5 Ingredients or Less!</h2>
@@ -33,8 +34,11 @@
         </h3>
         <br />
 
-        <asp:SqlDataSource ID="sql_ViewRecipe" runat="server" ConnectionString="<%$ ConnectionStrings:ajkisling_recipes_HW6 %>" DeleteCommand="DELETE FROM [ajkisling_recipes_HW6] WHERE [RecipeID] = @RecipeID" 
-            InsertCommand="INSERT INTO [ajkisling_recipes_HW6] ([RecipeName], [SubmittedBy], [Ingredient1], [Ingredient2], [Ingredient3], [Ingredient4], [Ingredient5], [Preparation], [Notes]) VALUES (@RecipeName, @SubmittedBy, @Ingredient1, @Ingredient2, @Ingredient3, @Ingredient4, @Ingredient5, @Preparation, @Notes)" SelectCommand="SELECT [RecipeName], [SubmittedBy], [Ingredient1], [Ingredient2], [Ingredient3], [Ingredient4], [Ingredient5], [Preparation], [Notes], [RecipeID] FROM [ajkisling_recipes_HW6]" UpdateCommand="UPDATE [ajkisling_recipes_HW6] SET [RecipeName] = @RecipeName, [SubmittedBy] = @SubmittedBy, [Ingredient1] = @Ingredient1, [Ingredient2] = @Ingredient2, [Ingredient3] = @Ingredient3, [Ingredient4] = @Ingredient4, [Ingredient5] = @Ingredient5, [Preparation] = @Preparation, [Notes] = @Notes WHERE [RecipeID] = @RecipeID">
+        <asp:SqlDataSource ID="sql_ViewRecipe" runat="server" ConnectionString="<%$ ConnectionStrings:ajkisling_recipes_HW6 %>" 
+            DeleteCommand="DELETE FROM [ajkisling_recipes_HW6] WHERE [RecipeID] = @RecipeID" 
+            InsertCommand="INSERT INTO [ajkisling_recipes_HW6] ([RecipeName], [SubmittedBy], [Ingredient1], [Ingredient2], [Ingredient3], [Ingredient4], [Ingredient5], [Preparation], [Notes]) VALUES (@RecipeName, @SubmittedBy, @Ingredient1, @Ingredient2, @Ingredient3, @Ingredient4, @Ingredient5, @Preparation, @Notes)" 
+            SelectCommand="SELECT [RecipeName], [SubmittedBy], [Ingredient1], [Ingredient2], [Ingredient3], [Ingredient4], [Ingredient5], [Preparation], [Notes], [RecipeID] FROM [ajkisling_recipes_HW6]" 
+            UpdateCommand="UPDATE [ajkisling_recipes_HW6] SET [RecipeName] = @RecipeName, [SubmittedBy] = @SubmittedBy, [Ingredient1] = @Ingredient1, [Ingredient2] = @Ingredient2, [Ingredient3] = @Ingredient3, [Ingredient4] = @Ingredient4, [Ingredient5] = @Ingredient5, [Preparation] = @Preparation, [Notes] = @Notes WHERE [RecipeID] = @RecipeID">
             <DeleteParameters>
                 <asp:Parameter Name="RecipeID" Type="Int32" />
             </DeleteParameters>
@@ -77,6 +81,9 @@
                         <td class="column2">
                             <asp:TextBox ID="tb_InsertRecipeName" runat="server" height="20px" width="300px" Text='<%# Bind("RecipeName") %>' />
                         </td>
+                        <td class="column2" style="width: 414px">
+                            <asp:RequiredFieldValidator ID="rfv_RecipeName" runat="server" ErrorMessage="Please enter the recipe name." CssClass="validationError" ControlToValidate="tb_InsertRecipeName"></asp:RequiredFieldValidator>
+                        </td>
                     </tr>
                         
                     <tr>
@@ -86,6 +93,9 @@
                         <td class="column2">
                             <asp:TextBox ID="tb_InsertSubmittedBy" runat="server" height="20px" width="300px" Text='<%# Bind("SubmittedBy") %>' />
                         </td>
+                        <td class="column2" style="width: 414px">
+                            <asp:RequiredFieldValidator ID="rfv_SubmittedBy" runat="server" ErrorMessage="Please enter the your name." ControlToValidate="tb_InsertSubmittedBy" CssClass="validationError"></asp:RequiredFieldValidator>
+                        </td>
                     </tr>
                     
                     <tr>
@@ -94,6 +104,9 @@
                         </td>
                         <td class="column2">
                             <asp:TextBox ID="tb_InsertIngredient1" runat="server" height="20px" width="300px" Text='<%# Bind("Ingredient1") %>' />
+                        </td>
+                        <td class="column2" style="width: 414px">
+                            <asp:RequiredFieldValidator ID="rfv_Ingredient1" runat="server" ErrorMessage="Recipe must have at least one ingredient." ControlToValidate="tb_InsertIngredient1" CssClass="validationError"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
 
@@ -140,6 +153,9 @@
                         <td class="column2">
                             <asp:TextBox ID="tb_InsertPreparation" runat="server" textmode="multiline" height="75px" width="300px" Text='<%# Bind("Preparation") %>' />
                         </td>
+                        <td class="column2" style="width: 414px">
+                            <asp:RequiredFieldValidator ID="rfv_Preparation" runat="server" ErrorMessage="Please enter preparation instructions." ControlToValidate="tb_InsertPreparation" CssClass="validationError"></asp:RequiredFieldValidator>
+                        </td>
                     </tr>
 
                     <tr>
@@ -150,17 +166,19 @@
                             <asp:TextBox ID="tb_InsertNotes" runat="server" textmode="multiline" height="75px" width="300px" Text='<%# Bind("Notes") %>' />
                         </td>
 
-                </table>                
+                </table>    
+
+                <asp:Button ID="btn_Insert" runat="server" cssclass="button" CausesValidation="true" CommandName="Insert" Text="Save" />            
 
             </InsertItemTemplate>
             <ItemTemplate>
 
             </ItemTemplate>
         </asp:FormView>
-    
-        <asp:Button ID="btn_Insert" runat="server" cssclass="button" CausesValidation="true" CommandName="Insert" Text="Insert" />
 
     </div>
+        <br />
+        <br />
         <br />
         <h6>&copy; 2014, MSCI:3300 Software Design &amp; Development<br /></h6>
     </form>

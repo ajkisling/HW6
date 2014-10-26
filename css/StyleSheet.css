@@ -35,7 +35,6 @@ h6 {
     font-size:14px;
     outline:none;
     color:black;
-    border:none;
     text-decoration:none;
     text-align:center;
     cursor:pointer;
@@ -44,6 +43,17 @@ h6 {
     border-radius:2px;
     background-color:#F08080;
     border-bottom:1px solid #696969;
+    top: 6px;
+    left: -99px;
+    border-left-style: none;
+    border-left-color: inherit;
+    border-left-width: medium;
+    border-right-style: none;
+    border-right-color: inherit;
+    border-right-width: medium;
+    border-top-style: none;
+    border-top-color: inherit;
+    border-top-width: medium;
 }
 
 .deletedRecipe {
@@ -61,12 +71,14 @@ td.column1 {
     vertical-align:central;
     padding-right:5px;
     color:#696969;
+    font-family:'Segoe UI';
 }
 
 td.column2 {
-    text-align:right;
+    text-align:left;
     width:300px;
     padding-left:5px;
+    font-family:'Segoe UI';
 }
 
 td.column3 {
@@ -75,4 +87,12 @@ td.column3 {
     vertical-align:top;
     padding-right:5px;
     color:#696969;
+    font-family:'Segoe UI';
+}
+
+.validationError {
+    color:red;
+    font-weight:bold;
+    text-align:left;
+    font-family:'Segoe UI';
 }

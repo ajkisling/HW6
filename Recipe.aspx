@@ -89,6 +89,9 @@
                         <td class="column2">
                             <asp:TextBox ID="tb_EditRecipeName" runat="server" height="20px" width="300px" Text='<%# Bind("RecipeName") %>' />
                         </td>
+                        <td class="column2" style="width: 414px">
+                            <asp:RequiredFieldValidator ID="rfv_EditRecipeName" runat="server" ErrorMessage="Recipe name is a required field." CssClass="validationError" ControlToValidate="tb_EditRecipeName"></asp:RequiredFieldValidator>
+                        </td>
                     </tr>
                         
                     <tr>
@@ -98,6 +101,9 @@
                         <td class="column2">
                             <asp:TextBox ID="tb_EditSubmittedBy" runat="server" height="20px" width="300px" Text='<%# Bind("SubmittedBy") %>' />
                         </td>
+                         <td class="column2" style="width: 414px">
+                            <asp:RequiredFieldValidator ID="rfv_EditSubmittedBy" runat="server" ErrorMessage="Submitted by is a required field." CssClass="validationError" ControlToValidate="tb_EditSubmittedBy"></asp:RequiredFieldValidator>
+                        </td>
                     </tr>
                     
                     <tr>
@@ -106,6 +112,9 @@
                         </td>
                         <td class="column2">
                             <asp:TextBox ID="tb_EditIngredient1" runat="server" height="20px" width="300px" Text='<%# Bind("Ingredient1") %>' />
+                        </td>
+                        <td class="column2" style="width: 414px">
+                            <asp:RequiredFieldValidator ID="rfv_EditIngredient1" runat="server" ErrorMessage="Recipe must have at least one ingredient." CssClass="validationError" ControlToValidate="tb_EditIngredient1"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
 
@@ -151,6 +160,9 @@
                         </td>
                         <td class="column2">
                             <asp:TextBox ID="tb_EditPreparation" runat="server" textmode="multiline" height="75px" width="300px" Text='<%# Bind("Preparation") %>' />
+                        </td>
+                        <td class="column2" style="width: 414px">
+                            <asp:RequiredFieldValidator ID="rfv_EditPreparation" runat="server" ErrorMessage="Please provide preparation instructions." CssClass="validationError" ControlToValidate="tb_EditPreparation"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
 
