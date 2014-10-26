@@ -51,7 +51,7 @@
                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="200px" BackColor="LightCoral" BorderColor="White" BorderStyle="Solid" BorderWidth="3px" ForeColor="White" />
                 </asp:BoundField>
                 <asp:HyperLinkField DataNavigateUrlFields="RecipeID" DataNavigateUrlFormatString="~/Recipe.aspx?RecipeID={0}" Text="Select" ControlStyle-ForeColor="Black" ControlStyle-CssClass="hyp">
-<ControlStyle CssClass="hyp" ForeColor="Black"></ControlStyle>
+                <ControlStyle CssClass="hyp" ForeColor="Black"></ControlStyle>
 
                 <FooterStyle BorderColor="White" BorderStyle="Solid" BorderWidth="3px" />
                 <HeaderStyle BackColor="#FFFF99" BorderColor="White" BorderStyle="Solid" BorderWidth="3px" Font-Size="14pt" ForeColor="DimGray" />

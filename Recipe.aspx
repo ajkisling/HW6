@@ -10,8 +10,8 @@
 
     <style type="text/css">
         #form1 {
-            height: 700px;
-            width: 600px;
+            height: 790px;
+            width: 604px;
         }
     </style>
 
@@ -34,11 +34,18 @@
         </h3>
         <br />
 
+        <!-- Message returned after recipe is deleted-->
         <span class="deletedRecipe"><asp:Label ID="lbl_deletedRecipe" runat="server"></asp:Label></span>
-        <asp:SqlDataSource ID="sql_ViewRecipe" runat="server" ConnectionString="<%$ ConnectionStrings:ajkisling_recipes_HW6 %>" DeleteCommand="DELETE FROM [ajkisling_recipes_HW6] WHERE [RecipeID] = @RecipeID" InsertCommand="INSERT INTO [ajkisling_recipes_HW6] ([RecipeName], [SubmittedBy], [Ingredient1], [Ingredient2], [Ingredient3], [Ingredient4], [Ingredient5], [Preparation], [Notes]) VALUES (@RecipeName, @SubmittedBy, @Ingredient1, @Ingredient2, @Ingredient3, @Ingredient4, @Ingredient5, @Preparation, @Notes)" SelectCommand="SELECT [RecipeName], [SubmittedBy], [Ingredient1], [Ingredient2], [Ingredient3], [Ingredient4], [Ingredient5], [Preparation], [Notes], [RecipeID] FROM [ajkisling_recipes_HW6] WHERE ([RecipeID] = @RecipeID)" UpdateCommand="UPDATE [ajkisling_recipes_HW6] SET [RecipeName] = @RecipeName, [SubmittedBy] = @SubmittedBy, [Ingredient1] = @Ingredient1, [Ingredient2] = @Ingredient2, [Ingredient3] = @Ingredient3, [Ingredient4] = @Ingredient4, [Ingredient5] = @Ingredient5, [Preparation] = @Preparation, [Notes] = @Notes WHERE [RecipeID] = @RecipeID">
+
+        <asp:SqlDataSource ID="sql_ViewRecipe" runat="server" ConnectionString="<%$ ConnectionStrings:ajkisling_recipes_HW6 %>" 
+            DeleteCommand="DELETE FROM [ajkisling_recipes_HW6] WHERE [RecipeID] = @RecipeID" 
+            SelectCommand="SELECT [RecipeName], [SubmittedBy], [Ingredient1], [Ingredient2], [Ingredient3], [Ingredient4], [Ingredient5], [Preparation], [Notes], [RecipeID] FROM [ajkisling_recipes_HW6] WHERE ([RecipeID] = @RecipeID)" 
+            UpdateCommand="UPDATE [ajkisling_recipes_HW6] SET [RecipeName] = @RecipeName, [SubmittedBy] = @SubmittedBy, [Ingredient1] = @Ingredient1, [Ingredient2] = @Ingredient2, [Ingredient3] = @Ingredient3, [Ingredient4] = @Ingredient4, [Ingredient5] = @Ingredient5, [Preparation] = @Preparation, [Notes] = @Notes WHERE [RecipeID] = @RecipeID">
+            
             <DeleteParameters>
                 <asp:Parameter Name="RecipeID" Type="Int32" />
             </DeleteParameters>
+            
             <InsertParameters>
                 <asp:Parameter Name="RecipeName" Type="String" />
                 <asp:Parameter Name="SubmittedBy" Type="String" />
@@ -50,9 +57,11 @@
                 <asp:Parameter Name="Preparation" Type="String" />
                 <asp:Parameter Name="Notes" Type="String" />
             </InsertParameters>
+            
             <SelectParameters>
                 <asp:QueryStringParameter Name="RecipeID" QueryStringField="RecipeID" Type="Int32" />
             </SelectParameters>
+            
             <UpdateParameters>
                 <asp:Parameter Name="RecipeName" Type="String" />
                 <asp:Parameter Name="SubmittedBy" Type="String" />
@@ -65,32 +74,198 @@
                 <asp:Parameter Name="Notes" Type="String" />
                 <asp:Parameter Name="RecipeID" Type="Int32" />
             </UpdateParameters>
+        
         </asp:SqlDataSource>
     
-    </div>
-        <asp:DetailsView ID="Recipe_Details" runat="server" AutoGenerateRows="False" DataKeyNames="RecipeID" DataSourceID="sql_ViewRecipe" Height="182px" Width="590px">
-            <Fields>
-                <asp:BoundField DataField="RecipeName" HeaderText="Recipe Name   " SortExpression="RecipeName" >
-                <HeaderStyle BackColor="LightCoral" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" HorizontalAlign="Right" VerticalAlign="Middle" Width="150px" />
-                <ItemStyle BackColor="White" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="Black" HorizontalAlign="Left" VerticalAlign="Middle" Width="400px" />
-                </asp:BoundField>
-                <asp:BoundField DataField="SubmittedBy" HeaderText="Submitted By" SortExpression="SubmittedBy" >
-                <HeaderStyle BackColor="LightCoral" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="White" HorizontalAlign="Right" VerticalAlign="Middle" Width="150px" />
-                <ItemStyle BackColor="White" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" ForeColor="Black" HorizontalAlign="Left" VerticalAlign="Middle" Width="400px" />
-                </asp:BoundField>
-                <asp:BoundField DataField="Ingredient1" HeaderText="Ingredient #1" SortExpression="Ingredient1" />
-                <asp:BoundField DataField="Ingredient2" HeaderText="Ingredient #2" SortExpression="Ingredient2" />
-                <asp:BoundField DataField="Ingredient3" HeaderText="Ingredient #3" SortExpression="Ingredient3" />
-                <asp:BoundField DataField="Ingredient4" HeaderText="Ingredient #4" SortExpression="Ingredient4" />
-                <asp:BoundField DataField="Ingredient5" HeaderText="Ingredient #5" SortExpression="Ingredient5" />
-                <asp:BoundField DataField="Preparation" HeaderText="Preparation" SortExpression="Preparation" />
-                <asp:BoundField DataField="Notes" HeaderText="Notes" SortExpression="Notes" />
-                <asp:CommandField ButtonType="Button" ShowCancelButton="False" ShowDeleteButton="True" ShowEditButton="True" UpdateText="Save" >
-                <ControlStyle BackColor="#FFFF99" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" Font-Bold="True" Font-Names="Segoe UI" ForeColor="Black" />
-                <ItemStyle BackColor="LightCoral" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" Font-Names="Segoe UI" HorizontalAlign="Center" VerticalAlign="Middle" />
-                </asp:CommandField>
-            </Fields>
-        </asp:DetailsView>
+        <asp:FormView ID="form_ViewEditRecipe" runat="server" DataKeyNames="RecipeID" DataSourceID="sql_ViewRecipe" Height="171px" Width="595px">
+            
+            <EditItemTemplate>
+
+                <table>
+                    <tr>
+                        <td class="column1">
+                            Recipe Name
+                        </td>
+                        <td class="column2">
+                            <asp:TextBox ID="tb_EditRecipeName" runat="server" height="20px" width="300px" Text='<%# Bind("RecipeName") %>' />
+                        </td>
+                    </tr>
+                        
+                    <tr>
+                        <td class="column1">
+                            Submitted By
+                        </td>
+                        <td class="column2">
+                            <asp:TextBox ID="tb_EditSubmittedBy" runat="server" height="20px" width="300px" Text='<%# Bind("SubmittedBy") %>' />
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="column1">
+                            Ingredient #1
+                        </td>
+                        <td class="column2">
+                            <asp:TextBox ID="tb_EditIngredient1" runat="server" height="20px" width="300px" Text='<%# Bind("Ingredient1") %>' />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="column1">
+                            Ingredient #2
+                        </td>
+                        <td class="column2">
+                            <asp:TextBox ID="tb_EditIngredient2" runat="server"  height="20px" width="300px" Text='<%# Bind("Ingredient2") %>' />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="column1">
+                            Ingredient #3
+                        </td>
+                        <td class="column2">
+                            <asp:TextBox ID="tb_EditIngredient3" runat="server" height="20px" width="300px" Text='<%# Bind("Ingredient3") %>' />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="column1">
+                            Ingredient #4
+                        </td>
+                        <td class="column2">
+                            <asp:TextBox ID="tb_EditIngredient4" runat="server" height="20px" width="300px" Text='<%# Bind("Ingredient4") %>' />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="column1">
+                            Ingredient #5
+                        </td>
+                        <td class="column2">
+                            <asp:TextBox ID="tb_EditIngredient5" runat="server" height="20px" width="300px" Text='<%# Bind("Ingredient5") %>' />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="column3">
+                            Preparation
+                        </td>
+                        <td class="column2">
+                            <asp:TextBox ID="tb_EditPreparation" runat="server" textmode="multiline" height="75px" width="300px" Text='<%# Bind("Preparation") %>' />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="column3">
+                            Notes
+                        </td>
+                        <td class="column2">
+                            <asp:TextBox ID="tb_EditNotes" runat="server" textmode="multiline" height="75px" width="300px" Text='<%# Bind("Notes") %>' />
+                        </td>
+
+                </table>                
+
+                <br />
+                <asp:Button ID="btn_Update" runat="server" cssclass="button" CausesValidation="true" CommandName="Update" Text="Save" />
+
+            </EditItemTemplate>
+            <InsertItemTemplate>
+
+            </InsertItemTemplate>
+            <ItemTemplate>
+                
+                <table>
+                    <tr>
+                        <td class="column1">
+                            Recipe Name
+                        </td>
+                        <td class="column2">
+                            <asp:TextBox ID="tb_ViewRecipeName" runat="server" height="20px" width="300px" Text='<%# Bind("RecipeName") %>' ReadOnly="True" />
+                        </td>
+                    </tr>
+                        
+                    <tr>
+                        <td class="column1">
+                            Submitted By
+                        </td>
+                        <td class="column2">
+                            <asp:TextBox ID="tb_ViewSubmittedBy" runat="server" height="20px" width="300px" Text='<%# Bind("SubmittedBy") %>' ReadOnly="True" />
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="column1">
+                            Ingredient #1
+                        </td>
+                        <td class="column2">
+                            <asp:TextBox ID="tb_ViewIngredient1" runat="server" height="20px" width="300px" Text='<%# Bind("Ingredient1") %>' ReadOnly="True" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="column1">
+                            Ingredient #2
+                        </td>
+                        <td class="column2">
+                            <asp:TextBox ID="tb_ViewIngredient2" runat="server"  height="20px" width="300px" Text='<%# Bind("Ingredient2") %>' ReadOnly="True" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="column1">
+                            Ingredient #3
+                        </td>
+                        <td class="column2">
+                            <asp:TextBox ID="tb_ViewIngredient3" runat="server" height="20px" width="300px" Text='<%# Bind("Ingredient3") %>' ReadOnly="True" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="column1">
+                            Ingredient #4
+                        </td>
+                        <td class="column2">
+                            <asp:TextBox ID="tb_ViewIngredient4" runat="server" height="20px" width="300px" Text='<%# Bind("Ingredient4") %>' ReadOnly="True" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="column1">
+                            Ingredient #5
+                        </td>
+                        <td class="column2">
+                            <asp:TextBox ID="tb_ViewIngredient5" runat="server" height="20px" width="300px" Text='<%# Bind("Ingredient5") %>' ReadOnly="True" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="column3">
+                            Preparation
+                        </td>
+                        <td class="column2">
+                            <asp:TextBox ID="tb_ViewPreparation" runat="server" textmode="multiline" height="75px" width="300px" Text='<%# Bind("Preparation") %>' ReadOnly="True" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="column3">
+                            Notes
+                        </td>
+                        <td class="column2">
+                            <asp:TextBox ID="tb_ViewNotes" runat="server" textmode="multiline" height="75px" width="300px" Text='<%# Bind("Notes") %>' ReadOnly="True" />
+                        </td>
+
+                </table>   
+                 <br />
+                <asp:Button ID="btn_Edit" runat="server" cssclass="button" CausesValidation="false" CommandName="Edit" Text="Edit" />
+                    &nbsp;
+                <asp:Button ID="btn_Delete" runat="server" cssclass="button" CausesValidation="false" CommandName="Delete" Text="Delete" />
+                <br />
+
+            </ItemTemplate>
+       
+             </asp:FormView> 
+        
+        </div>
         <br />
         <h6>&copy; 2014, MSCI:3300 Software Design &amp; Development<br /></h6>
     </form>

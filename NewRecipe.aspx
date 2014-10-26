@@ -75,7 +75,7 @@
                             Recipe Name
                         </td>
                         <td class="column2">
-                            <asp:TextBox ID="RecipeNameTextBox" runat="server" height="20px" width="300px" Text='<%# Bind("RecipeName") %>' />
+                            <asp:TextBox ID="tb_InsertRecipeName" runat="server" height="20px" width="300px" Text='<%# Bind("RecipeName") %>' />
                         </td>
                     </tr>
                         
@@ -84,7 +84,7 @@
                             Submitted By
                         </td>
                         <td class="column2">
-                            <asp:TextBox ID="SubmittedByTextBox" runat="server" height="20px" width="300px" Text='<%# Bind("SubmittedBy") %>' />
+                            <asp:TextBox ID="tb_InsertSubmittedBy" runat="server" height="20px" width="300px" Text='<%# Bind("SubmittedBy") %>' />
                         </td>
                     </tr>
                     
@@ -93,7 +93,7 @@
                             Ingredient #1
                         </td>
                         <td class="column2">
-                            <asp:TextBox ID="Ingredient1TextBox" runat="server" height="20px" width="300px" Text='<%# Bind("Ingredient1") %>' />
+                            <asp:TextBox ID="tb_InsertIngredient1" runat="server" height="20px" width="300px" Text='<%# Bind("Ingredient1") %>' />
                         </td>
                     </tr>
 
@@ -102,7 +102,7 @@
                             Ingredient #2
                         </td>
                         <td class="column2">
-                            <asp:TextBox ID="Ingredient2TextBox" runat="server"  height="20px" width="300px" Text='<%# Bind("Ingredient2") %>' />
+                            <asp:TextBox ID="tb_InsertIngredient2" runat="server"  height="20px" width="300px" Text='<%# Bind("Ingredient2") %>' />
                         </td>
                     </tr>
 
@@ -111,7 +111,7 @@
                             Ingredient #3
                         </td>
                         <td class="column2">
-                            <asp:TextBox ID="Ingredient3TextBox" runat="server" height="20px" width="300px" Text='<%# Bind("Ingredient3") %>' />
+                            <asp:TextBox ID="tb_InsertIngredient3" runat="server" height="20px" width="300px" Text='<%# Bind("Ingredient3") %>' />
                         </td>
                     </tr>
 
@@ -120,7 +120,7 @@
                             Ingredient #4
                         </td>
                         <td class="column2">
-                            <asp:TextBox ID="Ingredient4TextBox" runat="server" height="20px" width="300px" Text='<%# Bind("Ingredient4") %>' />
+                            <asp:TextBox ID="tb_InsertIngredient4" runat="server" height="20px" width="300px" Text='<%# Bind("Ingredient4") %>' />
                         </td>
                     </tr>
 
@@ -129,7 +129,7 @@
                             Ingredient #5
                         </td>
                         <td class="column2">
-                            <asp:TextBox ID="Ingredient5TextBox" runat="server" height="20px" width="300px" Text='<%# Bind("Ingredient5") %>' />
+                            <asp:TextBox ID="tb_InsertIngredient5" runat="server" height="20px" width="300px" Text='<%# Bind("Ingredient5") %>' />
                         </td>
                     </tr>
 
@@ -138,7 +138,7 @@
                             Preparation
                         </td>
                         <td class="column2">
-                            <asp:TextBox ID="PreparationTextBox" runat="server" textmode="multiline" height="75px" width="300px" Text='<%# Bind("Preparation") %>' />
+                            <asp:TextBox ID="tb_InsertPreparation" runat="server" textmode="multiline" height="75px" width="300px" Text='<%# Bind("Preparation") %>' />
                         </td>
                     </tr>
 
@@ -147,7 +147,7 @@
                             Notes
                         </td>
                         <td class="column2">
-                            <asp:TextBox ID="NotesTextBox" runat="server" textmode="multiline" height="75px" width="300px" Text='<%# Bind("Notes") %>' />
+                            <asp:TextBox ID="tb_InsertNotes" runat="server" textmode="multiline" height="75px" width="300px" Text='<%# Bind("Notes") %>' />
                         </td>
 
                 </table>                
@@ -158,7 +158,7 @@
             </ItemTemplate>
         </asp:FormView>
     
-        <asp:Button ID="btn_Insert" runat="server" CausesValidation="true" CommandName="Insert" Text="Insert" />
+        <asp:Button ID="btn_Insert" runat="server" cssclass="button" CausesValidation="true" CommandName="Insert" Text="Insert" />
 
     </div>
         <br />

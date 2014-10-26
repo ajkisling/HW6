@@ -2,7 +2,7 @@
 Partial Class Recipe
     Inherits System.Web.UI.Page
 
-    Protected Sub Recipe_Details_ItemDeleted(sender As Object, e As DetailsViewDeletedEventArgs) Handles Recipe_Details.ItemDeleted
+    Protected Sub form_ViewEditRecipe_ItemDeleted(sender As Object, e As FormViewDeletedEventArgs) Handles form_ViewEditRecipe.ItemDeleted
 
         Dim deletedRecipe As String = e.Values("RecipeName").ToString()
 
@@ -12,11 +12,10 @@ Partial Class Recipe
 
     End Sub
 
-    Protected Sub Recipe_Details_ItemUpdated(sender As Object, e As DetailsViewUpdatedEventArgs) Handles Recipe_Details.ItemUpdated
+    Protected Sub form_ViewEditRecipe_ItemUpdated(sender As Object, e As FormViewUpdatedEventArgs) Handles form_ViewEditRecipe.ItemUpdated
 
         Response.AddHeader("Refresh", "3;URL=./Default.aspx")
 
     End Sub
-
 
 End Class
